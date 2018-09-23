@@ -1,0 +1,133 @@
+<% include layout %>
+<body>
+<style>
+              .header {
+                      background:  cadetblue;
+                      border: 1px solid #eee;
+                      border-radius: 27px;
+                      padding: 15px;
+                      width: 30%;
+                      align-content: center;
+                      text-align: center;
+                      margin: 11px auto;
+                      
+                }             
+                
+               .img {
+                      padding:5px;
+                      cursor: pointer;
+          
+                 }
+                
+                
+ </style>
+    <div class="container-fluid">
+        <div  class="header" align="center"> Test de singification </div>        
+        <div ng-app="test" ng-controller="main">
+           
+       <div class="card">
+        <div class="card-header"> <font color="blue"> Choix la l'image qui ya la singification de mot :</font>  {{mots[0]}} </div>
+        <div class="card-body"> 
+          <div ng-show="content">
+
+             <img class="img" ng-repeat="x in img" id="{{$index}}" ng-repeat="" src="{{x}}"  ng-click='choix($index);' width="100px" height="100px"/>
+
+          </div>
+
+
+             <div ng-hide="content" style="text-align: center">
+
+                bravooooooooo!!! vouz avez  {{note}} point.
+
+             </div>
+         
+             <div class="progress">
+               <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40"
+               aria-valuemin="0" aria-valuemax="100" style="width:{{note}}0%">
+               {{note}}0% 
+               </div>
+             </div>
+             
+       </div>
+       <div class="card-footer" style="text-align:center">
+           {{answer}}
+       </div>
+
+       </div>
+
+
+
+
+         
+
+
+        </div>
+
+   </div>
+
+    <script>
+     angular.module('test',[]).controller('main',function($scope){
+       $scope.content=true;
+      $scope.mots=['Demande','long','pleur','peur','vieux',];
+      $scope.img=[ 
+                   'img/2.png',
+                   'img/4.png',
+                   'img/5.gif',
+                   'img/7.png',
+                   'img/8.jpg'
+                   ];
+  
+
+    $scope.choix = function(x){
+            
+             if (x == 0  && $scope.mots[0]=='Demande' )
+             {
+             $scope.answer='correct '; 
+             $scope.mots.splice(0, 1);
+             document.getElementById(x).style.display="none"; 
+             $scope.note=2;
+             } else if (x == 1 && $scope.mots[0]=='long' )
+             {
+              $scope.answer='correct '; 
+              $scope.mots.splice(0, 1);
+              document.getElementById(x).style.display="none"; 
+              $scope.note=$scope.note+2;
+             } else if (x == 3 && $scope.mots[0]=='pleur' )
+             {
+              $scope.answer='correct '; 
+              $scope.mots.splice(0, 1);
+              document.getElementById(x).style.display="none"; 
+              $scope.note=$scope.note+2;
+             }  else if (x == 2  && $scope.mots[0]=='peur' )
+             {
+              $scope.answer='correct '; 
+              $scope.mots.splice(0, 1);
+              document.getElementById(x).style.display="none"; 
+              $scope.note=$scope.note+2;
+             } else if (x == 4 && $scope.mots[0]=='vieux' )
+             {
+             $scope.answer='correct '; 
+              $scope.mots.splice(0, 1);
+              document.getElementById(x).style.display="none"; 
+              $scope.note=$scope.note+2;
+              $scope.content=false;
+             } else {
+       
+             $scope.answer='choix incorrect ';             
+             $scope.note--;
+             }
+
+
+        }  
+
+
+     });
+    
+    
+    
+    </script>
+
+
+</body>
+
+</html>

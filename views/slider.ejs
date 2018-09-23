@@ -1,0 +1,121 @@
+<% include layout %>
+        <body>
+        
+          <div ng-app="app" ng-controller="ctl">
+        <div id="slide" class="carousel slide" data-ride="carousel" style="display:none;position: fixed;width: 100%;margin:auto;background:#000;top:0px;bottom:0px">
+          <a  href=#close ng-click="fermer()" style="float:right;/* position: fixed; *//* right: 0px; *//* margin-top:  10px; */background: #eee;border-radius: 7px;cursor:pointer;font-size:15px">Fermer </a>
+          <!-- Indicators -->
+          <ul class="carousel-indicators">
+            <li data-target="#slide" ng-repeat="y in info" data-slide-to="{{$index}}"  class="{{y.active}}"></li>
+          
+          </ul>
+          
+          <!-- The slideshow -->
+          <div class="carousel-inner" style="text-align: center;">
+            
+            <div  ng-repeat="x in info" class="carousel-item {{x.active}}">
+                <img src="{{x.img}}" alt="{{x.img}}" width="500" height="500">
+                <div class="carousel-caption">
+                  <h3>{{x.mot}}</h3>
+                </div>
+              </div>
+        
+          <!-- Left and right controls -->
+             
+        <a class="carousel-control-prev" href="#slide" data-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+          </a>
+        <a class="carousel-control-next" href="#slide" data-slide="next">
+            <span class="carousel-control-next-icon"></span>
+          </a>
+          </div>
+          
+        
+          
+        </div>
+        
+        <div class = "pannel" style="padding:15px;">
+          <p>Un <a id = "toaffich" href=#open ng-click=ouvrir(0)>lion</a>, un <a id = "toaffich" href=# ng-click=ouvrir(3)>loup</a> et un <a id = "toaffich" href=# ng-click=ouvrir(1)>renard</a> se <a id = "toaffich" href=# ng-click=ouvrir(1)>lièrent</a> <a id = "toaffich" href=# ng-click=ouvrir(1)>d’amitié</a>, et sortirent pour <a id = "toaffich" href=# ng-click=uvrir(1)>chasser</a>. Ils <a id = "toaffich" href=# ng-click=ouvrir(1)>prirent</a> un <a id = "toaffich" href=# ng-click=ouvrir(1)>âne sauvage</a>,</p>
+           <p> un <a id = "toaffich" href=# ng-click=ouvrir(2)>lièvre</a> et un <a id = "toaffich" href=# ng-click=ouvrir(1)>cerf</a>.</p>
+          <p>Le <a id = "toaffich" href=# ng-click=ouvrir(5)>lion</a> s’<a id = "toaffich" href=# ng-click=ouvrir(6)>adressa</a> au <a id = "toaffich" href=# ng-click=ouvrir(1)>loup</a> :</p>
+          <p>-« <a id = "toaffich" href=# ng-click=ouvrir(4)>partage</a> entre nous », <a id = "toaffich" href=# ng-click=ouvrir(1)>ordonna</a>-t-il.</p>
+          <p>Le loup dit :</p>
+          <p>-« Le cas me paraît clair : l’âne est à toi, le lièvre est au renard et le cerf est à moi . »</p>
+          
+        </div>
+             <script>
+               angular.module('app',[]).controller('ctl',function($scope){
+                $scope.info=[];
+                $scope.ouvrir=function(index){
+                  switch(index) {
+                      case 0 :
+                            $scope.info.push({
+                            img:'/img/2.png',
+                            mot:'Demande',
+                            active:'active'
+                            },{
+                            img:'/img/4.png',
+                            mot:'long temps'
+                            }
+                            ,{
+                            img:'/img/5.gif',
+                            mot:'peur'
+                            });
+                        break;
+
+                      case 1 :
+                              $scope.info.push({
+                                 img:'/img/5.gif',
+                                 mot:'peur',
+                                 active:'active'
+                                 },{
+                                 img:'/img/7.png',
+                                 mot:'peur'
+                              
+                                 },{
+                                 img:'/img/8.jpg',
+                                 mot:'peur'
+                             
+                            });
+                          break;
+                      default :
+                              $scope.info.push({
+                                 img:'/img/5.gif',
+                                 mot:'peur',
+                                 active:'active'
+                            });
+                            }
+                            document.getElementById('slide').style.display='block';
+                            };  
+
+                  $scope.fermer=function(){
+                        $scope.info=[];
+                        document.getElementById('slide').style.display='none';
+                            };
+                              
+                     });
+             
+        function  ouvrir(index){
+        $(function(){ 
+          $("#slide").show();
+          $("#slide").carousel(index); 
+                     });
+                
+             }
+        function  fermer(){
+        $(function(){ 
+          $("#slide").hide();
+                     
+        });
+                
+             }
+                     
+             </script>
+        
+            </body>
+        
+        
+        
+        
+        
+        </html>
